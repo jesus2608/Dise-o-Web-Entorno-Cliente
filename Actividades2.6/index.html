@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gojo vs Sukuna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            position: relative;
+            overflow-x: hidden; /* Evitar barra de desplazamiento horizontal */
+        }
+
+        #gameContainer {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            z-index: 1;
+        }
+
+        .character {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .health-bar {
+            height: 25px;
+            width: 100%;
+            background-color: #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .health {
+            height: 100%;
+            background-color: green;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #messages {
+            margin-top: 20px;
+            min-height: 100px;
+        }
+
+        .character img {
+            width: 100px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* Imagenes de ataque más grandes, posicionadas a los lados */
+        #gojoActionImage {
+            position: absolute;
+            top: 50px;
+            left: -50px; /* Fuera del contenedor del juego */
+            width: 400px;
+            height: auto;
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+        #sukunaActionImage {
+            position: absolute;
+            top: 50px;
+            right: -50px; /* Fuera del contenedor del juego */
+            width: 400px;
+            height: auto;
+            z-index: 0;
+            opacity: 0.8;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="gameContainer">
+        <h1>Gojo vs Sukuna</h1>
+        
+        <div class="character">
+            <div>
+                <h2>Gojo Satoru</h2>
+                <img id="gojoImage" src="https://images.wallpapersden.com/image/download/satoru-gojo-in-flames-hd-jujutsu-kaisen-anime_bmdpamWUmZqaraWkpJRobWllrWdma2U.jpg" alt="Gojo Satoru">
+                <div class="health-bar">
+                    <div id="gojoHealth" class="health" style="width: 100%;"></div>
+                </div>
+                <p id="gojoHealthText">Vida: 100</p>
+            </div>
+
+            <div>
+                <h2>Ryomen Sukuna</h2>
+                <img id="sukunaImage" src="https://images.alphacoders.com/135/1350410.png" alt="Ryomen Sukuna">
+                <div class="health-bar">
+                    <div id="sukunaHealth" class="health" style="width: 100%;"></div>
+                </div>
+                <p id="sukunaHealthText">Vida: 100</p>
+            </div>
+        </div>
+
+        <div id="buttons">
+            <button onclick="atacar()">Atacar</button>
+            <button onclick="curarse()">Curarse</button>
+            <button onclick="concentrarEnergia()">Concentrar Energía Maldita</button>
+            <button onclick="salir()">Salir</button>
+        </div>
+
+        <div id="messages"></div>
+
+        <!-- Imágenes de ataque grandes y a los lados -->
+        <img id="gojoActionImage" src="" alt="Ataque de Gojo" style="display:none;">
+        <img id="sukunaActionImage" src="" alt="Ataque de Sukuna" style="display:none;">
+    </div>
+
+    <!-- Canción de fondo -->
+    <audio autoplay loop>
+        <source src="https://www.cjoint.com/doc/24_09/NIEqgXfCpT8_onlymp3.to---Jujutsu-Kaisen-Shibuya-Incident-Arc-Opening-FULL-SPECIALZ-by-King-Gnu-Lyrics--ldEzCnE89a4-192k-1702055160.mp3" type="audio/mpeg">
+        Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+    <script>
+        // Variables del juego
+        let gojo = 100;
+        let sukuna = 100;
+        let energiaMaldita = 3;
+        let ataqueGojo = 10;  // Max. daño de Gojo
+        let ataqueSukuna = 10;
+        let curacionMaxima = 10;
+
+        function actualizarBarras() {
+            document.getElementById('gojoHealth').style.width = gojo + '%';
+            document.getElementById('sukunaHealth').style.width = sukuna + '%';
+            document.getElementById('gojoHealthText').innerText = 'Vida: ' + gojo;
+            document.getElementById('sukunaHealthText').innerText = 'Vida: ' + sukuna;
+        }
+
+        function mostrarMensaje(mensaje) {
+            const mensajeDiv = document.getElementById('messages');
+            mensajeDiv.innerHTML = `<p>${mensaje}</p>`;
+        }
+
+        function mostrarAccionImagenGojo(imagen) {
+            const gojoImage = document.getElementById('gojoActionImage');
+            gojoImage.src = imagen;
+            gojoImage.style.display = 'block';
+
+            // Ocultar la imagen después de 3 segundos
+            setTimeout(() => {
+                gojoImage.style.display = 'none';
+            }, 3000); 
+        }
+
+        function mostrarAccionImagenSukuna(imagen) {
+            const sukunaImage = document.getElementById('sukunaActionImage');
+            sukunaImage.src = imagen;
+            sukunaImage.style.display = 'block';
+
+            // Ocultar la imagen después de 3 segundos
+            setTimeout(() => {
+                sukunaImage.style.display = 'none';
+            }, 3000); 
+        }
+
+        function atacar() {
+            let random = Math.floor(Math.random() * 5);  
+            let dano = random < 3 ? Math.floor(Math.random() * 6) + 4 : 10;  
+
+            if (dano == 10) {
+                mostrarMensaje("Gojo ha tirado un Purpura e hizo 10 de daño");
+                mostrarAccionImagenGojo('https://pm1.aminoapps.com/8845/035cd890a036419af90160339c387902303b549ar1-1002-564v2_00.jpg');
+            } else {
+                mostrarMensaje("Gojo ha atacado y ha hecho " + dano + " de daño");
+                mostrarAccionImagenGojo('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV0GAXNh3X2uqSgEjsukPfgn-j3cMKOeBSsFrBdCNp918fSBmN_12SW7xPYgiYNUdyiVE&usqp=CAU');
+            }
+
+            sukuna -= dano;
+            if (sukuna < 0) sukuna = 0;
+            actualizarBarras();
+
+            if (sukuna > 0) {
+                ataqueDeSukuna();
+            } else {
+                mostrarMensaje("¡Gojo ha ganado!");
+            }
+        }
+
+        function curarse() {
+            if (energiaMaldita > 0) {
+                let random = Math.floor(Math.random() * curacionMaxima);
+                gojo += random;
+                if (gojo > 100) gojo = 100;
+                energiaMaldita--;
+                mostrarMensaje("Gojo se ha curado " + random + " puntos. Energía maldita restante: " + energiaMaldita);
+                mostrarAccionImagenGojo('https://www.geekmi.news/__export/1712166217205/sites/debate/img/2024/04/03/geekmi_-_2024-04-03t104304_804.jpg_1902800913.jpg');
+            } else {
+                mostrarMensaje("No tienes energía maldita para curarte");
+            }
+            actualizarBarras();
+            ataqueDeSukuna();
+        }
+
+        function concentrarEnergia() {
+            let random = Math.floor(Math.random() * 4);
+            if (random == 1) {
+                energiaMaldita++;
+                mostrarMensaje("Has concentrado energía maldita. Energía maldita: " + energiaMaldita);
+                mostrarAccionImagenGojo('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSx3RYCHnme6ejD8T3_PU5sHvRTs8iUSWdcQ&s');
+            } else {
+                mostrarMensaje("No has podido concentrar energía maldita");
+            }
+        }
+
+        function ataqueDeSukuna() {
+            let random = Math.floor(Math.random() * 5);
+            let dano = random < 3 ? Math.floor(Math.random() * 6) + 4 : 10;  
+
+            if (dano == 10) {
+                mostrarMensaje("Sukuna ha lanzado el corte que parte el mundo e hizo 10 de daño");
+                mostrarAccionImagenSukuna('https://www.geekmi.news/__export/1713810021614/sites/debate/img/2024/04/22/geekmi_-_2024-04-22t111652_941.jpg_423682103.jpg');
+            } else {
+                mostrarMensaje("Sukuna ataca y hace " + dano + " de daño");
+                mostrarAccionImagenSukuna('https://img.ibxk.com.br/2023/11/23/23140904638618.jpg?ims=328x');
+            }
+
+            gojo -= dano;
+            if (gojo < 0) gojo = 0;
+            actualizarBarras();
+
+            if (gojo <= 0) {
+                mostrarMensaje("¡Has perdido! Sukuna ha ganado...");
+            }
+        }
+
+        function salir() {
+            mostrarMensaje("Hasta pronto");
+            document.getElementById('buttons').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
