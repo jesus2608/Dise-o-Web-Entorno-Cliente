@@ -1,0 +1,107 @@
+/* Reseteo de márgenes y padding predeterminados */
+
+/* Css realizado por el mesias para que se quede bonito*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Fondo de la página */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Estilo del encabezado */
+  header {
+    background: #6f42c1;
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+  }
+  
+  header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+  }
+  
+  header p {
+    font-size: 1.2em;
+  }
+  
+  /* Sección de mesas (donde se muestran las reservas) */
+  #mesas {
+    padding: 20px;
+    margin: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #mesas p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  /* Mesa disponible */
+  #mesas p.disponible {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  /* Mesa reservada */
+  #mesas p.reservada {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  /* Estilo de los botones */
+  .botones {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  button {
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Botón de "Reservar Mesa" */
+  #reservarMesa {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  #reservarMesa:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+  }
+  
+  /* Botón de "Mostrar Reservas" */
+  #mostrarReservas {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  #mostrarReservas:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+  }
+  
+  /* Estilos de mensaje cuando no hay mesas disponibles */
+  #mesas p.noDisponible {
+    background-color: #ffc107;
+    color: black;
+    font-weight: bold;
+  }
+  
