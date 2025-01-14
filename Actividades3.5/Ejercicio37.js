@@ -20,6 +20,7 @@ function carrera(){
 
    
 }
+
 function coche(coche) {
     return new Promise((bien) => {
         let progreso = 0;

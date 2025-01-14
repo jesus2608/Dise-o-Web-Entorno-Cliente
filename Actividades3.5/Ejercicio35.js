@@ -16,7 +16,6 @@ function ruleta (){
  });
 }
 
-
 const numero = prompt("Cuantas tiradas quieres hacer ");
 let total = 0;
 for (let index = 0; index < numero; index++) {
