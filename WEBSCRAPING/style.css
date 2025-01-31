@@ -1,0 +1,181 @@
+/* Estilo general para el body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center; /* Alineación horizontal al centro */
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
+    background-image: url(thumb_1645465007_948609.jpg);
+    background-size: cover; /* Cubre toda la pantalla, manteniendo la relación de aspecto */
+    background-position: center center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+}
+
+/* Contenedor del formulario */
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Estilos para los campos del formulario */
+#url {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 400px; /* Limitar el ancho máximo */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Estilo para el botón de enviar */
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+/* Cambiar color del botón cuando se pasa el ratón */
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para el contenedor del resultado de Game */
+#resultado {
+    margin-top: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #6a4c9c; /* Color morado de Game */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Asegurar que el título de resultados de PlayStation se alinee */
+h1 {
+    font-size: 22px;
+    margin: 20px auto;
+    text-align: center; /* Alineación al centro */
+}
+
+/* Estilo para los resultados de PlayStation */
+#resultado1 {
+    margin-top: 20px;
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #003087; /* Azul PlayStation */
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para las listas dentro de resultado1 (PlayStation) */
+#resultado1 li {
+    font-size: 18px;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #0052a2; /* Azul oscuro para cada item */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#resultado1 li:hover {
+    background-color: #00307d; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Estilo para la página de error (mensaje genérico de error) */
+h3 {
+    font-size: 18px;
+    color: #ff6347; /* Rojo para los mensajes de error */
+}
+
+/* Media Query para pantallas más pequeñas (móviles y tabletas) */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    /* Formulario */
+    form {
+        width: 100%;
+        max-width: 90%; /* Limitar el ancho máximo para pantallas pequeñas */
+        padding: 15px;
+    }
+
+    #url {
+        max-width: 100%; /* Hacer que el campo ocupe el 100% del ancho disponible */
+    }
+
+    /* Asegurar que los contenedores de resultados no sean demasiado grandes */
+    #resultado, #resultado1 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    #resultado1 li {
+        font-size: 16px;
+    }
+}
+
+/* Media Query para pantallas más pequeñas (móviles) */
+@media (max-width: 480px) {
+    /* Reducir aún más los márgenes y padding */
+    body {
+        padding: 5px;
+    }
+
+    form {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #url {
+        max-width: 100%;
+    }
+
+    #resultado, #resultado1 {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    #resultado1 li {
+        font-size: 14px;
+    }
+}
