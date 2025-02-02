@@ -24,6 +24,7 @@ export async function scrapearGp2(nombre) {
       return Array.from(elementos).map((elemento) => {
         let titulo = '';
         let precio = '';
+        let imagen= '';
 
         const tituloElemento = elemento.querySelector(".psw-t-body");
         if (tituloElemento !== null) {
@@ -34,8 +35,12 @@ export async function scrapearGp2(nombre) {
         if (precioElemento !== null) {
           precio = precioElemento.innerText.trim();
         }
+        const imagenJuego = elemento.querySelector('.psw-fade-in')
+        if (imagenJuego !== null) {
+          imagen = imagenJuego.getAttribute('src');
+        }
 
-        return { nombre: titulo, precio: precio };
+        return { nombre: titulo, precio: precio, imagen: imagen };
       });
     });
 

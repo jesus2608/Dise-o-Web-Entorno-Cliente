@@ -27,14 +27,17 @@ function main() {
         titulo = data[0].texto;
         precio = data[0].precio;
         plataforma = data[0].plataforma;
+        imagen = data[0].imagen;
 
         $('#resultado').append('<span> Nombre: ' + titulo + '</span><br>');
         $('#resultado').append('<span>Precio: ' + precio + '</span><br>');
         $('#resultado').append('<span>Plataforma: ' + plataforma + '</span><br>');    
+        $('#resultado').append('<span>Imagen: <img src= "' + imagen + '" alt="imagen"></span><br>');    
 
         console.log("Nombre: " + titulo);
         console.log("Precio: " + precio);
         console.log("Plataforma: " + plataforma);
+        console.log('Imagen '+imagen);
 
         return fetch("http://localhost:3000/api/productoPlay?name=" + titulo);
       })
@@ -42,7 +45,7 @@ function main() {
       .then(data => {
         for (let index = 0; index < data.length; index++) {
           if (data[index] && data[index].nombre && data[index].precio) {
-            $('#resultado1').append('<li> Producto: ' + data[index].nombre + ' Precio: ' + data[index].precio + '</li>');
+            $('#resultado1').append('<li> Producto: ' + data[index].nombre + ' Precio: ' + data[index].precio + '<img src ="'+data[index].imagen+'"</li>');
           }
         }
       })

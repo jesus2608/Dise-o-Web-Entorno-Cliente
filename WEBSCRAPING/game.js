@@ -22,10 +22,12 @@ export async function scrapearGame(url) {
       return Array.from(elementos).map(elemento => {
         const plataforma = document.querySelector('.dd a span');
         const precio = document.querySelector('.int');
+        const imagen = document.querySelector('#product-cover');
         return {
           texto: elemento.innerText, 
           plataforma: plataforma.innerText, 
-          precio: precio.innerHTML.trim()
+          precio: precio.innerHTML.trim(),
+          imagen: imagen.getAttribute('src')
         };
       });
     });
@@ -40,3 +42,5 @@ export async function scrapearGame(url) {
     console.error('Error:', error);
   }
 }
+
+
