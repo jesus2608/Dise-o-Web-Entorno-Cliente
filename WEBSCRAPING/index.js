@@ -16,8 +16,8 @@ app.use((req, res, next) => {
 
 /**
  * Ruta para realizar scraping de productos de Game.
- * Recibe una URL como parámetro de consulta y devuelve la información del producto.
- * Utiliza la función scrapearGame para obtener los datos del producto.
+ * Recibe una URL como parametro de consulta y devuelve la información del producto.
+ * Utiliza la funcion scrapearGame para obtener los datos del producto.
  * @param {string} url - La URL del producto en Game.
  * @returns {Promise<void>} Respuesta con los datos del producto o un error.
  * @throws {Error} Si ocurre un error durante el scraping.

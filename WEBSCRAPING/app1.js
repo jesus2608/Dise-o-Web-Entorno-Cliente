@@ -34,10 +34,7 @@ function main() {
         $('#resultado').append('<span>Plataforma: ' + plataforma + '</span><br>');    
         $('#resultado').append('<span>Imagen: <img src= "' + imagen + '" alt="imagen"></span><br>');    
 
-        console.log("Nombre: " + titulo);
-        console.log("Precio: " + precio);
-        console.log("Plataforma: " + plataforma);
-        console.log('Imagen '+imagen);
+    
 
         return fetch("http://localhost:3000/api/productoPlay?name=" + titulo);
       })

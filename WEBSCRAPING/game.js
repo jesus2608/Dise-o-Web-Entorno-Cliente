@@ -1,11 +1,11 @@
 import puppeteer from "puppeteer";
 
 /**
- * Scrapea la información de un producto desde una URL utilizando Puppeteer.
+ * Scrapea la informacion de un producto desde una URL utilizando Puppeteer.
  *
  * @param {string} url - La URL del producto a scrapeo.
  * @returns {Promise<Array<{ texto: string, plataforma: string, precio: string }>>} 
- * Un array de objetos que contiene la información del producto: titulo, plataforma y precio.
+ * Un array de objetos que contiene la información del producto: titulo, plataforma, imagen y precio.
  * @throws {Error} Si ocurre un error durante el proceso de scraping.
  */
 export async function scrapearGame(url) {
@@ -37,7 +37,7 @@ export async function scrapearGame(url) {
     
     return productos;
 
-  } catch (error) {
+  } catch (error){
 
     console.error('Error:', error);
   }
